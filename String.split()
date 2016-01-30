@@ -1,0 +1,26 @@
+//Junit Test for Java's String.split() function
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class SplitTest {
+
+  @Test
+  public void testNormalCase() {
+    assertArrayEquals(new String[]{"a","b","c"}, "a,b,c".split(","));
+    assertArrayEquals(new String[]{"a,b,c"}, "a,b,c".split(" "));
+  }
+
+  @Test
+  public void testCornerCase() {
+    assertArrayEquals(new String[]{"1","2","3"}, "1 2 3 ".split(" "));
+    assertArrayEquals(new String[]{"","1","2","3"}, " 1 2 3".split(" "));
+  }
+
+  @Test
+  public void testNullCase() {
+    assertArrayEquals(new String[]{""}, "".split(""));
+    assertArrayEquals(new String[]{}, " ".split(" "));
+    assertArrayEquals(new String[]{""}, "".split(" "));
+    assertArrayEquals(new String[]{"1",",","2",",","3"}, "1,2,3".split(""));
+  }
+}
